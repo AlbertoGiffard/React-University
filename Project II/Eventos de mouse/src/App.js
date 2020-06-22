@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './global.css';
 
 /* estilos en linea */
 /* const styles = {
@@ -72,7 +73,7 @@ class App extends Component {
 /* Eventos con el DOM */
 // el metodo preventdefault  lo que realiza es prevenir/evitar el comportamiento
 // por defecto
-class App extends Component{
+/* class App extends Component{
   manejador = (e) =>{
     e.preventDefault()
   }
@@ -89,7 +90,91 @@ class App extends Component{
       </div>
     )
   }
+} */
+
+/* Conservar eventos */
+//event.target.value accede al valor del input
+/* class PersistenciaEventos extends Component {
+  state = {
+    color: 'blue'
+  }
+  handlerChange = (event) =>{
+    const color = event.target.value;
+
+    this.setState((state) =>({
+      color: color
+    }))
+  }
+  render () {
+    return(
+      <div>
+        <input
+          type="text"
+          onChange={this.handlerChange}
+        />
+        <h1
+          style={{
+            color: this.state.color
+          }}
+        >
+          {this.state.color}
+        </h1>
+      </div>
+    )
+  }
+}
+const App = () =>{
+  return (
+    <div>
+      <PersistenciaEventos/>
+    </div>
+  )
+} */
+
+/* Eventos Personalizados */
+class Hijo extends Component{
+  manejadorClick = () =>{
+    this.props.onSaluda('Alberto en React')
+  }
+  render() {
+    return (
+      <div className='box blue'>
+        <h2>
+          Hijo
+        </h2>
+        <button
+        //el manejador lo envio como props, cuando sea personalizado
+          onClick={this.manejadorClick}
+        >
+          Saluda
+        </button>
+      </div>
+    )
+  }
 }
 
+class App extends Component{
+  state = {
+    name: ''
+  }
+  manejador = (name) =>{
+    this.setState({
+      name: name
+    })
+  }
+  render() {
+    return (
+      <div className='box red'>
+        <Hijo
+          // evento personalizado
+          onSaluda={this.manejador}
+        />
+        <h1>
+          Nombre: {this.state.name}
+        </h1>
+      </div>
+    )
+  }
+}
 
 export default App;
