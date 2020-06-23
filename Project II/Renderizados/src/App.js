@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 /* const Saludo = (props) =>{
   //puedo hacer un condicional ternario de las siguiente manera
@@ -180,13 +181,59 @@ class App extends Component{
 } */
 
 /* Controlar datos de entrada con proptypes */
-class App extends Component{
+/* class Profile extends Component{
+  //se interpone la palabra static ya que proptype es estatico
+  static propTypes = {
+    //le pasamos el tipo de datos que esperamos, por ejemplo en la siguiente linea le decimos que esperamos un string
+
+    //le podemos pasar isrequired si es necesario pasar este prop para que no arroje error
+    name: PropTypes.string.isRequired,
+    bio: PropTypes.string,
+    mail: PropTypes.string,
+    age: PropTypes.number,
+  }
+
+  // pasar props por defecto se utiliza la siguiente linea
+
+  //si no paso ningun prop tomara por defecto el de esta lista, por ejemplo, si no pasara como prop el name(que esta escrito dentro del class App mas abajo) tomara el name de aca
+  static defaultProps = {
+    name: 'Robert Test'
+  }
+  
+  saluda = () =>{
+    this.props.onHello()
+  }
   render() {
+    //traigo las props con destructuración
+    const { name, bio, mail } = this.props;
     return(
       <div>
-        
+        <h1>{name}</h1>
+        <p>
+          {bio}
+        </p>
+        <a href={`mailto:${mail}`}>
+          {mail}  
+        </a> 
+        <button onClick={this.saluda}>
+          Saluda
+        </button>
       </div>
     )
   }
 }
+class App extends Component{
+  render() {
+    return(
+      <div>
+        <Profile
+          name='Junior Prueba'
+          bio='Soy un objeto de prueba'
+          mail='pruebame@gmail.com'
+        />
+      </div>
+    )
+  }
+} */
+
 export default App;
