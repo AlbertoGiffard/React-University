@@ -676,7 +676,7 @@ class App extends Component{
 } */
 
 /* formulario con ejemplo de seleccion */
-class App extends Component {
+/* class App extends Component {
   state = {
     techs: ['Vue']
   }
@@ -699,7 +699,7 @@ class App extends Component {
           Etiqueta Select 
         </h1>
         <form>
-          {/* la propiedad dentro del tag selected hace que por defecto este seleccionado el valor que coloquemos dentro sin la necesidad de pasarle selected a la opcion que necesitamos que se muestre de primero */}
+          {/* la propiedad dentro del tag selected hace que por defecto este seleccionado el valor que coloquemos dentro sin la necesidad de pasarle selected a la opcion que necesitamos que se muestre de primero }
           <select 
             onChange={this.handleChange}
             multiple
@@ -717,6 +717,36 @@ class App extends Component {
             </li>
           ))}
         </ul>
+      </div>
+    )
+  }
+} */
+
+/* Input checkbox */
+class App extends Component{
+  state = {
+    active: true
+  }
+
+  handleChange = (e) =>{
+    this.setState({
+      active: e.target.checked
+    })
+  }
+  render() {
+    const { active } = this.state
+    return(
+      <div>
+        {active && (
+          <h1>Etiqueta Checkbox</h1>
+        )}
+        <form>
+          <input 
+            type="checkbox" 
+            checked={active}
+            onChange={this.handleChange}
+          />
+        </form>
       </div>
     )
   }
